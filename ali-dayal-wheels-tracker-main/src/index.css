@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: #f8fafc;
+    --card: #fff;
+    --sidebar: #1e293b;
+    --accent: #4e8cff;
+    --text: #22223b;
+    --border: #e5e7eb;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Default light mode */
+  body {
+    @apply bg-white text-black transition-colors duration-300;
+  }
+
+  /* Dark mode */
+  .dark body {
+    @apply bg-darkBg text-darkText;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white text-black border border-gray-200 rounded-xl p-4 shadow-md transition-all duration-300;
+  }
+  .dark .card {
+    @apply bg-darkCard text-darkText border-darkBorder;
+  }
+
+  /* Buttons */
+  .button {
+    @apply px-4 py-2 rounded-lg text-white font-medium transition;
+  }
+  .button-primary {
+    @apply bg-blue-600 hover:bg-blue-700;
+  }
+  .dark .button-primary {
+    @apply bg-darkAccent hover:bg-darkHover;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    @apply bg-white text-black;
+  }
+  .dark .sidebar {
+    @apply bg-darkCard text-darkText;
+  }
+}
+
+/* Print styles */
+@media print {
+  .print\\:hidden {
+    display: none !important;
+  }
+  
+  .print\\:block {
+    display: block !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  * {
+    box-shadow: none !important;
+    border-color: #e5e7eb !important;
+  }
+}
